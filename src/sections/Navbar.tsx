@@ -94,7 +94,7 @@ const NavLinks = ({ loggedIn }: NavLinksProps) => {
 
             {loggedIn && (
                 <>
-                    <li><Link href="/TODO">TODO</Link></li>
+                    <li><Link href="/profile">Profile</Link></li>
                 </>
             )}
         </>

@@ -41,6 +41,7 @@ const Footer = () => {
                         <ul className="space-y-3">
                             {[
                                 ["Home", "/"],
+                                ["Profile", "/profile"],
                                 ["Trips", "/TODO"],
                                 ["Community", "/TODO"],
                                 ["Share Story", "/TODO"],

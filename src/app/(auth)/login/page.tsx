@@ -27,7 +27,7 @@ export default function LoginPage() {
         try {
             await signInWithEmailAndPassword(auth, email, password);
             toast.success("Logged in successfully.", { id: loadingToast });
-            router.push("/");
+            router.push("/profile");
         } catch {
             toast.error("Login failed. Please try again.", { id: loadingToast });
         }
