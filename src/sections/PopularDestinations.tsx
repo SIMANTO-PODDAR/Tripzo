@@ -75,7 +75,7 @@ export default function PopularDestinations() {
                     <h2 className="text-4xl md:text-5xl font-bold text-[#0F566C] mb-4">
                         Popular Destinations
                     </h2>
-                    <p className="max-w-2xl mx-auto text-gray-600 text-lg leading-relaxed">
+                    <p className="max-w-2xl mx-auto text-gray-600 text-lg leading-relaxed text-justify sm:text-center">
                         Discover the places travelers love the most. Explore inspiring destinations, read authentic travel experiences, and start planning your next unforgettable adventure.
                     </p>
                 </div>

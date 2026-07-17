@@ -50,7 +50,7 @@ export default function WhyShareYourJourney() {
             Why Share Your Journey?
           </h2>
 
-          <p className="max-w-2xl mx-auto text-gray-600 text-lg leading-relaxed">
+          <p className="max-w-2xl mx-auto text-gray-600 text-lg leading-relaxed text-justify sm:text-center">
             Every journey has a story worth remembering. Share your adventures,
             inspire fellow travelers, and let AI help transform your memories
             into engaging travel experiences.
