@@ -68,7 +68,7 @@ const Footer = () => {
                                 ["Explore", "/#Explore"],
                                 ["Why Tripzo", "/#Why-Tripzo"],
                                 ["Newsletter", "/#Newsletter"],
-                                ["Contact", "/contact"],
+                                ["Testimonials", "/#Testimonials"],
                             ].map(([title, href]) => (
                                 <li key={title}>
                                     <Link
