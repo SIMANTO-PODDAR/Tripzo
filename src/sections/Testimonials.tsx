@@ -136,9 +136,11 @@ export default function Testimonials() {
     return (
         <section id='Testimonials' className="py-10 md:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
             <div className="max-w-7xl mx-auto mb-16 text-center">
-                <div className="inline-flex items-center gap-2 bg-[#0F566C]/10 text-[#0F566C] px-5 py-2 rounded-full text-sm font-medium mb-5">
-                    <MessageCircle className="w-4 h-4" />
-                    Traveler Voices
+                <div className="mb-10 flex justify-center">
+                    <span className="badge badge-outline inline-flex items-center gap-2 rounded-full border-[#0F566C] px-5 py-2 text-sm font-medium text-[#0F566C]">
+                        <MessageCircle className="w-4 h-4" />
+                        Traveler Voices
+                    </span>
                 </div>
 
                 <h2 className="text-4xl md:text-5xl font-bold text-[#0F566C] mb-4">

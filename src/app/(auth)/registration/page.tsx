@@ -172,7 +172,7 @@ export default function RegisterPage() {
                         <div className="flex gap-2 justify-end mt-6">
                             <Button
                                 type="submit"
-                                className="bg-[#E88429] hover:bg-[#c96e1f] text-white font-semibold h-12 rounded-lg w-full"
+                                className="bg-[#E88429] hover:bg-orange-600 text-white font-semibold h-12 rounded-lg w-full"
                             >
                                 Register
                             </Button>

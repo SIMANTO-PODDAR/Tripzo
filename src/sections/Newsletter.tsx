@@ -5,16 +5,18 @@ export default function Newsletter() {
         <section id='Newsletter' className="py-10 md:py-20 px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
                 <div className="mb-12 text-center">
-                    <div className="inline-flex items-center gap-2 bg-[#0F566C]/10 text-[#0F566C] px-5 py-2 rounded-full text-sm font-medium mb-5">
-                        <Mail className="w-4 h-4" />
-                        Stay Connected
+                    <div className="mb-10 flex justify-center">
+                        <span className="badge badge-outline inline-flex items-center gap-2 rounded-full border-[#0F566C] px-5 py-2 text-sm font-medium text-[#0F566C]">
+                            <Mail className="w-4 h-4" />
+                            Stay Connected
+                        </span>
                     </div>
 
                     <h2 className="text-4xl md:text-5xl font-bold text-[#0F566C] mb-4">
                         Join Our Travel Newsletter
                     </h2>
 
-                    <p className="max-w-2xl mx-auto text-black text-lg text-justify sm:text-center leading-relaxed">
+                    <p className="max-w-2xl mx-auto text-black text-lg leading-relaxed">
                         Get the latest travel stories, destination inspiration, AI travel tips, and Tripzo updates delivered straight to your inbox.
                     </p>
                 </div>
@@ -27,7 +29,7 @@ export default function Newsletter() {
                             Stay Inspired
                         </h3>
 
-                        <p className="text-black text-justify sm:text-center mb-6">
+                        <p className="text-black text-j sm:text-center mb-6">
                             Subscribe to receive travel inspiration, featured destinations, community stories, and helpful AI travel updates.
                         </p>
 

@@ -131,7 +131,7 @@ export default function LoginPage() {
                         <div className="flex flex-col gap-3 mt-6">
                             <Button
                                 type="submit"
-                                className="bg-[#E88429] hover:bg-[#c96e1f] text-white font-semibold h-12 rounded-lg w-full"
+                                className="bg-[#E88429] hover:bg-orange-600 text-white font-semibold h-12 rounded-lg w-full"
                             >
                                 Log In
                             </Button>
