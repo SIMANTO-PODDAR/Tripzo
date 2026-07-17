@@ -64,7 +64,7 @@ const destinations: Destination[] = [
 
 export default function PopularDestinations() {
     return (
-        <section className="w-full py-10 md:py-20 bg-[#f2f7f8] mt-5">
+        <section id="Explore" className="w-full py-10 md:py-20 bg-[#f2f7f8] mt-5">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
                 <div className="mb-12 text-center">

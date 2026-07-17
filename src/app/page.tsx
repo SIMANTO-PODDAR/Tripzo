@@ -1,5 +1,6 @@
 import Hero from "@/sections/Hero";
 import PopularDestinations from "@/sections/PopularDestinations";
+import WhyShareYourJourney from "@/sections/WhyShareYourJourney";
 
 export default function Home() {
   return (
@@ -7,6 +8,7 @@ export default function Home() {
 
       <Hero />
       <PopularDestinations />
+      <WhyShareYourJourney />
 
     </div>
   );
