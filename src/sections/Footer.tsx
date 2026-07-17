@@ -23,10 +23,10 @@ const Footer = () => {
                                 height={40}
                                 priority
                             />
-                            <p>Share Your Journey</p>
+                            <p className="text-[#0F566C] ">Explore • Share • Inspire</p>
                         </Link>
 
-                        <p className="mt-5 max-w-sm text-sm leading-7 text-gray-600">
+                        <p className="mt-5 max-w-sm text-sm leading-7 text-[#0F566C] ">
                             Discover amazing destinations, share unforgettable travel
                             experiences, and inspire others to explore the world with Tripzo.
                         </p>

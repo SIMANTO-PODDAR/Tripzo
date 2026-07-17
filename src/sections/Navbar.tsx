@@ -47,7 +47,7 @@ const Navbar = () => {
                     </div>
 
                     <div className="sm:navbar-start">
-                        <Image src={Logo} alt='Tripzo Logo' height={40} title="Share Your Journey" />
+                        <Image src={Logo} alt='Tripzo Logo' height={40} title="Explore • Share • Inspire" />
                     </div>
                 </div>
 
