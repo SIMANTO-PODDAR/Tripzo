@@ -65,7 +65,7 @@ const Navbar = () => {
                                     {(user?.displayName?.charAt(0) || "U").toUpperCase()}
                                 </Avatar.Fallback>
                             </Avatar>
-                            <button onClick={Logout} className="btn btn-sm bg-[#E88429] font-bold text-white flex gap-2 items-center" >
+                            <button onClick={Logout} className="btn btn-sm bg-[#E88429] hover:bg-orange-600 font-bold text-white flex gap-2 items-center" >
                                 Logout
                                 <span className="text-xl"><AiOutlineLogout /></span>
                             </button>

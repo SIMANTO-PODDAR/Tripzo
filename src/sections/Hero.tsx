@@ -73,7 +73,7 @@ export default function Hero() {
             </div>
 
             {/* White wave divider at bottom */}
-            <div className="absolute -bottom-2 left-0 right-0 z-10 pointer-events-none">
+            <div className="absolute -bottom-1 -left-5 right-0 z-10 pointer-events-none">
                 <svg
                     viewBox="0 0 1440 60"
                     fill="none"
