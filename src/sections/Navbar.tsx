@@ -1,15 +1,34 @@
+"use client"
 import Image from "next/image";
 import Logo from "../../public/tripzo.png";
 import { AiOutlineLogin, AiOutlineLogout } from "react-icons/ai";
 import Link from "next/link";
+import toast from "react-hot-toast";
+import { signOut } from "firebase/auth";
+import { useRouter } from "next/navigation";
+import { Avatar } from "@heroui/react";
+import { useAuth } from "@/context/AuthContext";
+import { auth } from "@/lib/firebase";
 
 type NavLinksProps = {
     loggedIn: boolean;
 };
 
 const Navbar = () => {
-    const loggedIn = true;
-    // const loggedIn = false;
+    const { user } = useAuth();
+    const loggedIn = !!user;
+
+    const router = useRouter();
+    const Logout = async () => {
+        try {
+            await signOut(auth);
+            toast.success("Logged out successfully");
+            router.push("/");
+        }
+        catch {
+            toast.error("Logout failed");
+        }
+    };
 
     return (
         <div className="bg-base-100 shadow-md z-100 sticky top-0">
@@ -40,8 +59,13 @@ const Navbar = () => {
 
                 {
                     loggedIn ? (
-                        <div className="navbar-end gap-0.5">
-                            <button className="btn btn-sm bg-[#E88429] font-bold text-white flex gap-2 items-center" >
+                        <div className="navbar-end gap-1">
+                            <Avatar>
+                                <Avatar.Fallback className="bg-[#e0cebc] border border-[#0F566C] rounded-full text-[#0F566C] font-bold">
+                                    {(user?.displayName?.charAt(0) || "U").toUpperCase()}
+                                </Avatar.Fallback>
+                            </Avatar>
+                            <button onClick={Logout} className="btn btn-sm bg-[#E88429] font-bold text-white flex gap-2 items-center" >
                                 Logout
                                 <span className="text-xl"><AiOutlineLogout /></span>
                             </button>
