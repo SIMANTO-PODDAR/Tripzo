@@ -21,10 +21,9 @@ interface Story {
 interface ExploreCardProps {
     story: Story;
     page: "explore" | "myStories" | "discoverMoreStories";
-    onDeleteSuccess?: () => void;
 }
 
-export default function ExploreCard({ story, page, onDeleteSuccess }: ExploreCardProps) {
+export default function ExploreCard({ story, page }: ExploreCardProps) {
 
 
     const formatDate = (dateStr: string) => {
@@ -71,7 +70,7 @@ export default function ExploreCard({ story, page, onDeleteSuccess }: ExploreCar
                     </p>
 
                     {/* Title */}
-                    <h3 className="text-xl font-bold text-[#0F566C] mb-2 line-clamp-1 group-hover:text-orange-600 transition-colors duration-200">
+                    <h3 className="text-xl font-bold text-[#0F566C] mb-2 line-clamp-1 group-hover:text-[#2390b1] transition-colors duration-200">
                         {story.title}
                     </h3>
 
@@ -99,7 +98,7 @@ export default function ExploreCard({ story, page, onDeleteSuccess }: ExploreCar
                     {/* Action Button */}
                     <Link href={`/explore/${story.id}`}>
                         <button
-                            className="w-full flex items-center justify-center gap-2 bg-[#E88429] text-white font-semibold py-2.5 px-4 rounded-xl hover:bg-orange-600 transition-colors duration-300 text-sm cursor-pointer shadow-md shadow-orange-500/10"
+                            className="w-full flex items-center justify-center gap-2 bg-[#0F566C] hover:bg-[#2390b1] font-bold text-white py-2.5 px-4 rounded-xl transition-colors duration-300 text-sm cursor-pointer shadow-md shadow-orange-500/10"
                         >
                             Read Story
                             <ArrowRight className="w-4 h-4" />
@@ -112,7 +111,6 @@ export default function ExploreCard({ story, page, onDeleteSuccess }: ExploreCar
                         storyTitle={story.title}
                         userId={story.userId}
                         page={page}
-                        onDeleteSuccess={onDeleteSuccess}
                     />
                 </div>
             </article>

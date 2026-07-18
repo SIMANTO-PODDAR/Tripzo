@@ -91,9 +91,12 @@ export default function ProfilePage() {
                                 </button>
                             </Link>
 
-                            <button className="rounded-xl border border-[#0F566C] px-8 py-3 font-semibold text-[#0F566C] hover:bg-[#0F566C] hover:text-white transition">
-                                My Journeys
-                            </button>
+                            <Link href='/my-stories'>
+                                <button className="rounded-xl border border-[#0F566C] px-8 py-3 font-semibold text-[#0F566C] hover:bg-[#0F566C] hover:text-white transition">
+                                    My Stories
+                                </button>
+                            </Link>
+
                         </div>
                     </div>
                 </div>

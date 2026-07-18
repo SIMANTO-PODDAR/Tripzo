@@ -96,6 +96,7 @@ const NavLinks = ({ loggedIn }: NavLinksProps) => {
                 <>
                     <li><Link href="/profile">Profile</Link></li>
                     <li><Link href="/post-story">Post Story</Link></li>
+                    <li><Link href="/my-stories">My Stories</Link></li>
                 </>
             )}
         </>
