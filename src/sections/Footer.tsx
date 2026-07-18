@@ -43,8 +43,10 @@ const Footer = () => {
                                 ["Home", "/"],
                                 ["Profile", "/profile"],
                                 ["Explore", "/explore"],
-                                ["Community", "/TODO"],
                                 ["Post Story", "/post-story"],
+                                ["Community", "/TODO"],
+                                ["Story Generator", "/ai-story-generator"],
+
                             ].map(([title, href]) => (
                                 <li key={title}>
                                     <Link
@@ -71,6 +73,8 @@ const Footer = () => {
                                 ["Why Tripzo", "/#WhyTripzo"],
                                 ["AI Features", "/#AiFeatures"],
                                 ["Testimonials", "/#Testimonials"],
+                                ["Image Explorer", "/ai-image-explorer"],
+
                             ].map(([title, href]) => (
                                 <li key={title}>
                                     <Link

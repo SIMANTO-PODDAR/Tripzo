@@ -91,13 +91,15 @@ const NavLinks = ({ loggedIn }: NavLinksProps) => {
         <>
             <li><Link href="/">Home</Link></li>
             <li><Link href="/explore">Explore</Link></li>
+            <li><Link href="/TODO">Community</Link></li>
 
             {loggedIn && (
                 <>
                     <li><Link href="/profile">Profile</Link></li>
                     <li><Link href="/post-story">Post Story</Link></li>
                     <li><Link href="/my-stories">My Stories</Link></li>
-                    <li><Link href="/story-generator">Story Generator</Link></li>
+                    <li><Link href="/ai-story-generator">Story Generator</Link></li>
+                    <li><Link href="/ai-image-explorer">Image Explorer</Link></li>
                 </>
             )}
         </>

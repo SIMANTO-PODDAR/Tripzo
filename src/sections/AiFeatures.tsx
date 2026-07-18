@@ -1,4 +1,5 @@
 import { Sparkles, Image, Check } from "lucide-react";
+import Link from "next/link";
 
 interface FeatureCardProps {
     icon: React.ElementType;
@@ -6,6 +7,7 @@ interface FeatureCardProps {
     description: string;
     highlights: string[];
     infoText: string;
+    buttonLink: string;
 }
 
 function FeatureCard({
@@ -14,6 +16,7 @@ function FeatureCard({
     description,
     highlights,
     infoText,
+    buttonLink,
 }: FeatureCardProps) {
     return (
         <div className="group flex flex-col rounded-2xl border border-gray-200 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#0F566C]/50">
@@ -33,9 +36,16 @@ function FeatureCard({
                 ))}
             </ul>
 
-            <div className="mt-auto rounded-lg bg-[#E88429]/10 px-4 py-3 text-sm text-gray-700">
+            <div className="rounded-lg bg-[#E88429]/10 px-4 py-3 text-sm text-gray-700 mb-2">
                 {infoText}
             </div>
+
+            <Link
+                href={buttonLink}
+                className="mt-auto inline-flex items-center justify-center rounded-lg bg-[#0F566C] px-5 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-[#0F566C]/90 hover:shadow-md"
+            >
+                Try Now
+            </Link>
         </div>
     );
 }
@@ -61,7 +71,7 @@ export default function AiFeatures() {
                     and gain meaningful insights from your travel photos before publishing
                     them with confidence.
                 </p>
-            </div> 
+            </div>
 
             {/* Feature Cards */}
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
@@ -76,12 +86,13 @@ export default function AiFeatures() {
                         "Edit before publishing",
                     ]}
                     infoText="Create meaningful travel stories in minutes with AI-assisted writing."
+                    buttonLink="/ai-story-generator"
                 />
 
                 <FeatureCard
                     icon={Image}
-                    title="AI Image Understanding"
-                    description="Upload your travel photos and let AI analyze the scene to generate useful information that enriches your story and provides better context for readers."
+                    title="AI Image Explorer"
+                    description="Upload your travel photos and let AI analyze the scene to generate useful information that enriches your story and provides better context for readers.You can regenerate the content before publishing."
                     highlights={[
                         "Automatic image captions",
                         "Scene description",
@@ -89,6 +100,7 @@ export default function AiFeatures() {
                         "Understand the mood of the photo",
                     ]}
                     infoText="Transform your travel photos into richer stories with intelligent image analysis."
+                    buttonLink="/ai-image-explorer"
                 />
             </div>
         </section>
