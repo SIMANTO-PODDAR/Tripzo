@@ -18,7 +18,7 @@ export default function ProfilePage() {
     }
 
     return (
-        <section className="min-h-[80vh] py-16 px-4">
+        <section className="min-h-[80vh] py-5 md:py-15 px-4">
             <div className="max-w-4xl mx-auto">
                 {/* Section Header */}
                 <div className="mb-12 text-center">
