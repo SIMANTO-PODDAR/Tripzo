@@ -84,19 +84,30 @@ export default function ProfilePage() {
                         </div>
 
                         {/* Action Buttons */}
-                        <div className="flex flex-col sm:flex-row gap-4 mt-8">
-                            <Link href='/post-story'>
-                                <button className="rounded-xl bg-[#E88429] hover:bg-orange-600 px-8 py-3 font-semibold text-white hover:opacity-90 transition">
+                        <div className="grid w-full max-w-2xl grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+                            <Link href="/post-story">
+                                <button className="w-full rounded-xl border border-[#E88429] px-8 py-3 font-semibold text-[#E88429] hover:bg-[#E88429] hover:text-white transition">
                                     Post Story
                                 </button>
                             </Link>
 
-                            <Link href='/my-stories'>
-                                <button className="rounded-xl border border-[#0F566C] px-8 py-3 font-semibold text-[#0F566C] hover:bg-[#0F566C] hover:text-white transition">
+                            <Link href="/my-stories">
+                                <button className="w-full rounded-xl border border-[#0F566C] px-8 py-3 font-semibold text-[#0F566C] hover:bg-[#0F566C] hover:text-white transition">
                                     My Stories
                                 </button>
                             </Link>
 
+                            <Link href="/ai-story-generator">
+                                <button className="w-full rounded-xl border border-[#E88429] px-8 py-3 font-semibold text-[#E88429] hover:bg-[#E88429] hover:text-white transition">
+                                    AI Story Generator
+                                </button>
+                            </Link>
+
+                            <Link href="/ai-image-explorer">
+                                <button className="w-full rounded-xl border border-[#0F566C] px-8 py-3 font-semibold text-[#0F566C] hover:bg-[#0F566C] hover:text-white transition">
+                                    AI Image Explorer
+                                </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

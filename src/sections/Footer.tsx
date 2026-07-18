@@ -44,7 +44,7 @@ const Footer = () => {
                                 ["Profile", "/profile"],
                                 ["Explore", "/explore"],
                                 ["Post Story", "/post-story"],
-                                ["Community", "/TODO"],
+                                ["Community", "/community"],
                                 ["Story Generator", "/ai-story-generator"],
 
                             ].map(([title, href]) => (
