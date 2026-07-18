@@ -2,6 +2,7 @@ import { headers } from 'next/headers';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { MapPin, CalendarDays, User, ArrowLeft } from 'lucide-react';
+import DiscoverMoreStories from '@/sections/DiscoverMoreStories';
 
 interface Story {
     id: string;
@@ -154,6 +155,9 @@ export default async function StoryDetailPage({
                         </div>
                     </dl>
                 </section>
+
+                {/* ========== Discover More Stories ========== */}
+                <DiscoverMoreStories travelType={travelType} currentId={id} />
             </div>
         </main>
     );

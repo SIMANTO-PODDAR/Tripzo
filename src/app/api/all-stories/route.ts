@@ -11,6 +11,7 @@ export async function GET(request: NextRequest) {
     const sort = searchParams.get("sort") ?? "newest";
     const page = parseInt(searchParams.get("page") ?? "1", 10);
     const limit = parseInt(searchParams.get("limit") ?? "8", 10);
+    const excludeId = searchParams.get("excludeId") ?? "";
 
     try {
         const q = query(
@@ -74,6 +75,10 @@ export async function GET(request: NextRequest) {
                 const timeB = b.createdAt?.seconds ?? 0;
                 return timeA - timeB;
             });
+        }
+
+        if (excludeId) {
+            result = result.filter((story) => story.id !== excludeId);
         }
 
         // 5. Paginate

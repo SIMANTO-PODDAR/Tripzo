@@ -11,7 +11,7 @@ interface ExploreDeleteBtnProps {
     storyId: string;
     storyTitle: string;
     userId: string;
-    page: "explore" | "manageStories" | "alsoLike";
+    page: "explore" | "myStories" | "discoverMoreStories";
     onDeleteSuccess?: () => void;
 }
 
@@ -26,7 +26,7 @@ export default function ExploreDeleteBtn({
     const [deleting, setDeleting] = useState(false);
 
     // Only show delete button on Manage Stories page and if the user is the owner
-    if (page !== "manageStories" || !user || userId !== user.uid) {
+    if (page !== "myStories" || !user || userId !== user.uid) {
         return null;
     }
 

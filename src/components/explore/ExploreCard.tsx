@@ -8,7 +8,7 @@ interface Story {
     id: string;
     title: string;
     description: string;
-    location: [string, string]; // [city, country]
+    location: [string, string];
     travelDate: string;
     travelType: string;
     image: string;
@@ -20,7 +20,7 @@ interface Story {
 
 interface ExploreCardProps {
     story: Story;
-    page: "explore" | "manageStories" | "alsoLike";
+    page: "explore" | "myStories" | "discoverMoreStories";
     onDeleteSuccess?: () => void;
 }
 
