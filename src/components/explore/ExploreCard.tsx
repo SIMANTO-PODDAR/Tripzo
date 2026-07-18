@@ -2,6 +2,7 @@
 
 import { MapPin, Calendar, ArrowRight } from "lucide-react";
 import ExploreDeleteBtn from "./ExploreDeleteBtn";
+import Link from "next/link";
 
 interface Story {
     id: string;
@@ -96,12 +97,14 @@ export default function ExploreCard({ story, page, onDeleteSuccess }: ExploreCar
                     </div>
 
                     {/* Action Button */}
-                    <button
-                        className="w-full flex items-center justify-center gap-2 bg-[#E88429] text-white font-semibold py-2.5 px-4 rounded-xl hover:bg-orange-600 transition-colors duration-300 text-sm cursor-pointer shadow-md shadow-orange-500/10"
-                    >
-                        Read Story
-                        <ArrowRight className="w-4 h-4" />
-                    </button>
+                    <Link href={`/explore/${story.id}`}>
+                        <button
+                            className="w-full flex items-center justify-center gap-2 bg-[#E88429] text-white font-semibold py-2.5 px-4 rounded-xl hover:bg-orange-600 transition-colors duration-300 text-sm cursor-pointer shadow-md shadow-orange-500/10"
+                        >
+                            Read Story
+                            <ArrowRight className="w-4 h-4" />
+                        </button>
+                    </Link>
 
                     {/* Delete button (if applicable) */}
                     <ExploreDeleteBtn

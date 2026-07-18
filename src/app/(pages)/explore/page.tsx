@@ -156,7 +156,7 @@ function ExploreContent() {
                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0F566C]/10 border border-[#0F566C]/20 mb-6">
                         <Compass className="w-4 h-4 text-[#0F566C]" />
                         <span className="text-sm font-medium text-[#0F566C]">
-                            Discover Adventures
+                            Explore
                         </span>
                     </div>
 

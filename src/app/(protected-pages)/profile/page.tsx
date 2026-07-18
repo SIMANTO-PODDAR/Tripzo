@@ -3,6 +3,7 @@
 import { User, Mail } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 import { ImProfile } from "react-icons/im";
+import Link from "next/link";
 
 export default function ProfilePage() {
     const { user } = useAuth();
@@ -84,9 +85,12 @@ export default function ProfilePage() {
 
                         {/* Action Buttons */}
                         <div className="flex flex-col sm:flex-row gap-4 mt-8">
-                            <button className="rounded-xl bg-[#E88429] hover:bg-orange-600 px-8 py-3 font-semibold text-white hover:opacity-90 transition">
-                                Edit Profile
-                            </button>
+                            <Link href='/post-story'>
+                                <button className="rounded-xl bg-[#E88429] hover:bg-orange-600 px-8 py-3 font-semibold text-white hover:opacity-90 transition">
+                                    Post Story
+                                </button>
+                            </Link>
+
                             <button className="rounded-xl border border-[#0F566C] px-8 py-3 font-semibold text-[#0F566C] hover:bg-[#0F566C] hover:text-white transition">
                                 My Journeys
                             </button>

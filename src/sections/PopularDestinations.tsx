@@ -64,14 +64,14 @@ const destinations: Destination[] = [
 
 export default function PopularDestinations() {
     return (
-        <section id="Explore" className="w-full py-10 md:py-20 mt-5">
+        <section id="Discover" className="w-full py-10 md:py-20 mt-5">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
                 <div className="mb-12 text-center">
                     <div className="mb-10 flex justify-center">
                         <span className="badge badge-outline inline-flex items-center gap-2 rounded-full border-[#0F566C] px-5 py-2 text-sm font-medium text-[#0F566C]">
                             <Compass className="w-4 h-4" />
-                            Explore
+                            Discover
                         </span>
                     </div>
                     <h2 className="text-4xl md:text-5xl font-bold text-[#0F566C] mb-4">
@@ -146,7 +146,7 @@ export default function PopularDestinations() {
                                 </div>
 
                                 {/* Explore Button */}
-                                <Link href='/todo'>
+                                <Link href='/explore'>
                                     <button className="w-full flex items-center justify-center gap-2 bg-[#E88429] text-white font-semibold py-2.5 px-4 rounded-lg hover:bg-orange-600 transition-colors duration-300 text-sm">
                                         Explore Stories
                                         <ArrowRight className="w-4 h-4" />

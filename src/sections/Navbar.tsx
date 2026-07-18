@@ -90,7 +90,7 @@ const NavLinks = ({ loggedIn }: NavLinksProps) => {
     return (
         <>
             <li><Link href="/">Home</Link></li>
-            <li><Link href="/TODO">TODO</Link></li>
+            <li><Link href="/explore">Explore</Link></li>
 
             {loggedIn && (
                 <>

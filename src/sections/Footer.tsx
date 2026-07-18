@@ -42,7 +42,7 @@ const Footer = () => {
                             {[
                                 ["Home", "/"],
                                 ["Profile", "/profile"],
-                                ["Trips", "/TODO"],
+                                ["Explore", "/explore"],
                                 ["Community", "/TODO"],
                                 ["Post Story", "/post-story"],
                             ].map(([title, href]) => (
@@ -66,7 +66,7 @@ const Footer = () => {
 
                         <ul className="space-y-3">
                             {[
-                                ["Explore", "/#Explore"],
+                                ["Discover", "/#Discover"],
                                 ["Newsletter", "/#Newsletter"],
                                 ["Why Tripzo", "/#WhyTripzo"],
                                 ["AI Features", "/#AiFeatures"],
