@@ -104,13 +104,13 @@ const PostStoryPage = () => {
             return;
         }
 
-        if (title.trim().length < 3 || title.trim().length > 40) {
-            toast.error("Story title must be between 3 and 40 characters.");
+        if (title.trim().length < 3 || title.trim().length > 50) {
+            toast.error("Story title must be between 3 and 50 characters.");
             return;
         }
 
-        if (storyDescription.trim().length > 500) {
-            toast.error("Description must be under 500 characters.");
+        if (storyDescription.trim().length > 2000) {
+            toast.error("Description must be under 2000 characters.");
             return;
         }
 
@@ -219,7 +219,7 @@ const PostStoryPage = () => {
                                 </label>
                                 <input
                                     type="text"
-                                    maxLength={40}
+                                    maxLength={50}
                                     minLength={3}
                                     required
                                     value={title}
@@ -228,7 +228,7 @@ const PostStoryPage = () => {
                                     className="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#3498db] focus:border-transparent transition-all text-gray-700 bg-white"
                                 />
                                 <div className="text-right text-xs text-gray-400 mt-1">
-                                    {title.length}/40 characters
+                                    {title.length}/50 characters
                                 </div>
                             </div>
 
@@ -237,7 +237,7 @@ const PostStoryPage = () => {
                                     Story Description <span className="text-red-500">*</span>
                                 </label>
                                 <textarea
-                                    maxLength={500}
+                                    maxLength={2000}
                                     required
                                     rows={4}
                                     value={storyDescription}
@@ -246,7 +246,7 @@ const PostStoryPage = () => {
                                     className="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#3498db] focus:border-transparent transition-all text-gray-700 bg-white resize-none"
                                 />
                                 <div className="text-right text-xs text-gray-400 mt-1">
-                                    {storyDescription.length}/500 characters
+                                    {storyDescription.length}/2000 characters
                                 </div>
                             </div>
                         </div>

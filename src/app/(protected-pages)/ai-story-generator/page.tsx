@@ -22,6 +22,9 @@ interface ChatMessage {
         imageUrl?: string;
         prompt?: string;
         storyLength?: string;
+        story?: string;
+        loading?: boolean;
+        error?: string;
     };
 }
 
@@ -137,7 +140,7 @@ export default function StoryGeneratorPage() {
     };
 
     // ============ GENERATE HANDLER ============
-    const handleGenerate = () => {
+    const handleGenerate = async () => {
         if (!imageUrl || !prompt.trim() || !storyLength) return;
 
         const userMsg: ChatMessage = {
@@ -157,6 +160,7 @@ export default function StoryGeneratorPage() {
                 imageUrl,
                 prompt: prompt.trim(),
                 storyLength,
+                loading: true,
             },
         };
 
@@ -167,6 +171,164 @@ export default function StoryGeneratorPage() {
         setPreviewUrl(null);
         setPrompt("");
         setStoryLength("");
+
+        // Call API to generate story
+        try {
+            const res = await fetch("/api/ai", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    imageUrl,
+                    prompt: prompt.trim(),
+                    storyLength,
+                }),
+            });
+
+            const data = await res.json();
+
+            if (res.ok) {
+                setMessages((prev) =>
+                    prev.map((msg) =>
+                        msg.id === aiMsg.id
+                            ? {
+                                ...msg,
+                                content: {
+                                    ...msg.content,
+                                    story: data.story,
+                                    loading: false,
+                                },
+                            }
+                            : msg
+                    )
+                );
+            } else {
+                setMessages((prev) =>
+                    prev.map((msg) =>
+                        msg.id === aiMsg.id
+                            ? {
+                                ...msg,
+                                content: {
+                                    ...msg.content,
+                                    error: data.error || "Failed to generate story",
+                                    loading: false,
+                                },
+                            }
+                            : msg
+                    )
+                );
+                toast.error(data.error || "Failed to generate story");
+            }
+        } catch (error) {
+            setMessages((prev) =>
+                prev.map((msg) =>
+                    msg.id === aiMsg.id
+                        ? {
+                            ...msg,
+                            content: {
+                                ...msg.content,
+                                error: "Network error occurred",
+                                loading: false,
+                            },
+                        }
+                        : msg
+                )
+            );
+            toast.error("Network error occurred");
+        }
+    };
+
+    // ============ REGENERATE HANDLER ============
+    const handleRegenerate = async (regenerateImageUrl: string, regeneratePrompt: string, regenerateStoryLength: string) => {
+        const userMsg: ChatMessage = {
+            id: Date.now().toString(),
+            type: "user",
+            content: {
+                imageUrl: regenerateImageUrl,
+                prompt: regeneratePrompt,
+                storyLength: regenerateStoryLength,
+            },
+        };
+
+        const aiMsg: ChatMessage = {
+            id: (Date.now() + 1).toString(),
+            type: "ai",
+            content: {
+                imageUrl: regenerateImageUrl,
+                prompt: regeneratePrompt,
+                storyLength: regenerateStoryLength,
+                loading: true,
+            },
+        };
+
+        setMessages((prev) => [...prev, userMsg, aiMsg]);
+
+        // Call API to generate story
+        try {
+            const res = await fetch("/api/ai", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    imageUrl: regenerateImageUrl,
+                    prompt: regeneratePrompt,
+                    storyLength: regenerateStoryLength,
+                }),
+            });
+
+            const data = await res.json();
+
+            if (res.ok) {
+                setMessages((prev) =>
+                    prev.map((msg) =>
+                        msg.id === aiMsg.id
+                            ? {
+                                ...msg,
+                                content: {
+                                    ...msg.content,
+                                    story: data.story,
+                                    loading: false,
+                                },
+                            }
+                            : msg
+                    )
+                );
+            } else {
+                setMessages((prev) =>
+                    prev.map((msg) =>
+                        msg.id === aiMsg.id
+                            ? {
+                                ...msg,
+                                content: {
+                                    ...msg.content,
+                                    error: data.error || "Failed to generate story",
+                                    loading: false,
+                                },
+                            }
+                            : msg
+                    )
+                );
+                toast.error(data.error || "Failed to generate story");
+            }
+        } catch (error) {
+            setMessages((prev) =>
+                prev.map((msg) =>
+                    msg.id === aiMsg.id
+                        ? {
+                            ...msg,
+                            content: {
+                                ...msg.content,
+                                error: "Network error occurred",
+                                loading: false,
+                            },
+                        }
+                        : msg
+                )
+            );
+            toast.error("Network error occurred");
+        }
     };
 
     // ----- Derived state -----
@@ -197,7 +359,7 @@ export default function StoryGeneratorPage() {
                             <p className="text-xs mt-1">Start by uploading an image and describing your trip below.</p>
                         </div>
                     ) : (
-                        messages.map((msg) => <ChatBubble key={msg.id} message={msg} />)
+                        messages.map((msg) => <ChatBubble key={msg.id} message={msg} onRegenerate={handleRegenerate} />)
                     )}
                 </div>
             </div>
@@ -292,9 +454,9 @@ export default function StoryGeneratorPage() {
                             <option value="" disabled>
                                 Select Length
                             </option>
+                            <option value="100-200">100-200 words</option>
                             <option value="200-300">200-300 words</option>
                             <option value="300-400">300-400 words</option>
-                            <option value="400-500">400-500 words</option>
                         </select>
 
                         {/* Generate button */}
@@ -323,7 +485,7 @@ export default function StoryGeneratorPage() {
 }
 
 // ---------- Chat Bubble Component ----------
-function ChatBubble({ message }: { message: ChatMessage }) {
+function ChatBubble({ message, onRegenerate }: { message: ChatMessage; onRegenerate: (imageUrl: string, prompt: string, storyLength: string) => Promise<void> }) {
     const isUser = message.type === "user";
 
     return (
@@ -375,45 +537,49 @@ function ChatBubble({ message }: { message: ChatMessage }) {
                 ) : (
                     <div className="text-sm space-y-2">
                         <p className="font-medium text-[#0F566C]">AI Response</p>
-                        <p className="leading-relaxed break-all">
-                            Travel Image:{" "}
-                            <a
-                                href={message.content.imageUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-[#E88429] underline"
-                            >
-                                {message.content.imageUrl}
-                            </a>
-                        </p>
-                        <p>
-                            <span className="font-medium">Prompt:</span> {message.content.prompt}
-                        </p>
-                        <p>
-                            <span className="font-medium">Requested Length:</span> {message.content.storyLength} words
-                        </p>
-                        <div className="mt-3 p-3 bg-yellow-50 border border-yellow-200 rounded-lg text-xs text-yellow-800 flex items-start gap-2">
-                            <LoaderCircle className="h-4 w-4 animate-spin mt-0.5 shrink-0" />
-                            <span>Waiting for AI integration...</span>
-                        </div>
-
-                        {/* Disabled action buttons */}
-                        <div className="flex gap-2 pt-2">
-                            <button
-                                disabled
-                                className="flex items-center gap-1 text-xs px-3 py-1 rounded-full bg-gray-100 text-gray-400 cursor-not-allowed"
-                            >
-                                <RefreshCw className="w-3 h-3" />
-                                Regenerate
-                            </button>
-                            <button
-                                disabled
-                                className="flex items-center gap-1 text-xs px-3 py-1 rounded-full bg-gray-100 text-gray-400 cursor-not-allowed"
-                            >
-                                <Copy className="w-3 h-3" />
-                                Copy
-                            </button>
-                        </div>
+                        {message.content.loading && (
+                            <div className="mt-3 p-3 bg-yellow-50 border border-yellow-200 rounded-lg text-xs text-yellow-800 flex items-start gap-2">
+                                <LoaderCircle className="h-4 w-4 animate-spin mt-0.5 shrink-0" />
+                                <span>Generating your travel story...</span>
+                            </div>
+                        )}
+                        {message.content.error && (
+                            <div className="mt-3 p-3 bg-red-50 border border-red-200 rounded-lg text-xs text-red-800">
+                                {message.content.error}
+                            </div>
+                        )}
+                        {message.content.story && (
+                            <div className="mt-3">
+                                <p className="leading-relaxed whitespace-pre-wrap">{message.content.story}</p>
+                            </div>
+                        )}
+                        {!message.content.loading && !message.content.error && (
+                            <div className="flex gap-2 pt-2">
+                                <button
+                                    onClick={() => {
+                                        if (message.content.imageUrl && message.content.prompt && message.content.storyLength) {
+                                            onRegenerate(message.content.imageUrl!, message.content.prompt!, message.content.storyLength!);
+                                        }
+                                    }}
+                                    className="flex items-center gap-1 text-xs px-3 py-1 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
+                                >
+                                    <RefreshCw className="w-3 h-3" />
+                                    Regenerate
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        if (message.content.story) {
+                                            navigator.clipboard.writeText(message.content.story!);
+                                            toast.success("Story copied to clipboard");
+                                        }
+                                    }}
+                                    className="flex items-center gap-1 text-xs px-3 py-1 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
+                                >
+                                    <Copy className="w-3 h-3" />
+                                    Copy
+                                </button>
+                            </div>
+                        )}
                     </div>
                 )}
             </div>
