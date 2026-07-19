@@ -64,7 +64,7 @@ const socialPlatforms = [
     { name: "WhatsApp", icon: Phone, url: "https://wa.me/8801234567890" },
     { name: "Telegram", icon: Send, url: "https://t.me/tripzo" },
     { name: "Medium", icon: BookIcon, url: "https://medium.com/@tripzo" },
-    { name: "Website", icon: FaInternetExplorer, url: "https://tripzo.com" },
+    { name: "Website", icon: FaInternetExplorer, url: "https://tripzo-by-simanto.vercel.app" },
 ];
 
 const contactDetails = [

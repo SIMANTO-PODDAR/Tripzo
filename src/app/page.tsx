@@ -11,8 +11,8 @@ export default function Home() {
 
       <Hero />
       <PopularDestinations />
-      <WhyShareYourJourney />
       <AiFeatures />
+      <WhyShareYourJourney />
       <Testimonials />
       <Newsletter />
 
