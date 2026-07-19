@@ -32,7 +32,7 @@ interface ApiResponse {
     currentPage: number;
 }
 
-const LIMIT = 6;
+const LIMIT = 8;
 const DEBOUNCE_MS = 350;
 const SKELETON_COUNT = LIMIT;
 
@@ -191,7 +191,7 @@ function ExploreContent() {
 
                 {/* Loading Skeletons */}
                 {loading && !error && (
-                    <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                    <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                         {Array.from({ length: SKELETON_COUNT }).map((_, i) => (
                             <ExploreCardSkeleton key={i} />
                         ))}
@@ -222,7 +222,7 @@ function ExploreContent() {
 
                 {/* Results Grid */}
                 {!loading && !error && stories.length > 0 && (
-                    <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                    <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                         {stories.map((story) => (
                             <ExploreCard key={story.id} story={story} page="explore" />
                         ))}
@@ -258,7 +258,7 @@ export default function ExplorePage() {
                         <div className="h-20 w-full bg-gray-100 rounded-2xl mb-8" />
 
                         {/* Card Grid Placeholder */}
-                        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                             {Array.from({ length: 8 }).map((_, i) => (
                                 <ExploreCardSkeleton key={i} />
                             ))}

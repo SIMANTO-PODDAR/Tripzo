@@ -7,7 +7,7 @@ import { FaEarthAmericas } from "react-icons/fa6";
 
 export default function Hero() {
     return (
-        <section className="relative w-full min-h-[90vh] flex items-center justify-center overflow-hidden">
+        <section className="relative w-full min-h-[90vh] flex items-center justify-center overflow-hidden pt-5 sm:pt-0">
             {/* Background Image + Overlay */}
             <div className="absolute inset-0 z-0">
                 <Image

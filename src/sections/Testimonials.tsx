@@ -78,8 +78,8 @@ const testimonials: Testimonial[] = [
 ];
 
 const TestimonialCard: React.FC<{ testimonial: Testimonial }> = ({ testimonial }) => (
-    <div className="group w-75 sm:w-90 shrink-0 h-full">
-        <div className="h-full border border-gray-200 rounded-xl bg-white p-6 flex flex-col transition-all duration-300 ease-out hover:border-[#0F566C]/30 hover:-translate-y-1">
+    <div className="group w-85 sm:w-90 shrink-0 h-full">
+        <div className="h-full border border-gray-200 rounded-xl bg-white p-4 flex flex-col transition-all duration-300 ease-out hover:border-[#0F566C]/30 hover:-translate-y-1">
             <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
                     <img
@@ -117,7 +117,7 @@ const TestimonialCard: React.FC<{ testimonial: Testimonial }> = ({ testimonial }
                 {testimonial.storyTitle}
             </h5>
 
-            <p className="text-black leading-relaxed grow text-sm">
+            <p className="text-black leading-relaxed grow text-sm line-clamp-4 sm:line-clamp-none">
                 {testimonial.review}
             </p>
 

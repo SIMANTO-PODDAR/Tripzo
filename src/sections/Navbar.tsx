@@ -60,11 +60,13 @@ const Navbar = () => {
                 {
                     loggedIn ? (
                         <div className="navbar-end gap-1">
-                            <Avatar>
-                                <Avatar.Fallback className="bg-[#e0cebc] border border-[#0F566C] rounded-full text-[#0F566C] font-bold">
-                                    {(user?.displayName?.charAt(0) || "U").toUpperCase()}
-                                </Avatar.Fallback>
-                            </Avatar>
+                            <Link href='/profile'>
+                                <Avatar>
+                                    <Avatar.Fallback className="bg-[#e0cebc] border border-[#0F566C] rounded-full text-[#0F566C] font-bold cursor-pointer">
+                                        {(user?.displayName?.charAt(0) || "U").toUpperCase()}
+                                    </Avatar.Fallback>
+                                </Avatar>
+                            </Link>
                             <button onClick={Logout} className="btn btn-sm bg-[#E88429] hover:bg-orange-600 font-bold text-white flex gap-2 items-center" >
                                 Logout
                                 <span className="text-xl"><AiOutlineLogout /></span>
