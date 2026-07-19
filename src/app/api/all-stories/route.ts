@@ -8,7 +8,7 @@ export async function GET(request: NextRequest) {
     const search = searchParams.get("search") ?? "";
     const travelType = searchParams.get("travelType") ?? "";
     const last7Days = searchParams.get("last7Days") ?? "";
-    const sort = searchParams.get("sort") ?? "newest";
+    const sort = searchParams.get("sort") ?? "oldest";
     const page = parseInt(searchParams.get("page") ?? "1", 10);
     const limit = parseInt(searchParams.get("limit") ?? "8", 10);
     const excludeId = searchParams.get("excludeId") ?? "";

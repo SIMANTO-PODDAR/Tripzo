@@ -40,7 +40,7 @@ A responsive homepage with hero section, popular destinations, platform benefits
 
 ### 2. User Authentication
 
-Secure Firebase Authentication with email/password registration, login, and demo login functionality for quick access.
+Secure Firebase Authentication with Google Sign In, email/password registration, login, and demo login functionality for quick access.
 
 ### 3. Explore Travel Stories
 

@@ -224,6 +224,7 @@ Each card displays:
 
 **Features:**
 
+- Google Sign In
 - Form validation
 - Error handling
 - Success feedback
@@ -238,6 +239,7 @@ Each card displays:
 
 **Features:**
 
+- Google Sign In
 - Error handling for invalid credentials
 - Demo Login button (auto-fill credentials)
 - Remember me functionality

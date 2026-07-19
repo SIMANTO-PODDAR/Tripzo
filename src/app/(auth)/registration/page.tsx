@@ -9,6 +9,7 @@ import { Eye, Compass, MapPinned, Plane, Globe } from "lucide-react";
 import toast from "react-hot-toast";
 import { auth } from "@/lib/firebase";
 import { BsEyeSlash } from "react-icons/bs";
+import GoogleSignInBtn from "@/components/share/GoogleSignInBtn";
 
 export default function RegisterPage() {
     const router = useRouter();
@@ -177,6 +178,14 @@ export default function RegisterPage() {
                                 Register
                             </Button>
                         </div>
+
+                        <div className="relative flex items-center gap-4 my-2">
+                            <div className="flex-1 border-t border-gray-200"></div>
+                            <span className="text-xs text-gray-400">or</span>
+                            <div className="flex-1 border-t border-gray-200"></div>
+                        </div>
+
+                        <GoogleSignInBtn redirectTo="/" />
                     </Form>
 
                     <p className="mt-6 text-center text-sm text-gray-500">

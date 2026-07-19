@@ -9,6 +9,7 @@ import toast from "react-hot-toast";
 import { Eye, Compass, MapPinned, Plane, Globe } from "lucide-react";
 import { auth } from "@/lib/firebase";
 import { BsEyeSlash } from "react-icons/bs";
+import GoogleSignInBtn from "@/components/share/GoogleSignInBtn";
 
 export default function LoginPage() {
     const router = useRouter();
@@ -143,6 +144,14 @@ export default function LoginPage() {
                             >
                                 Demo login
                             </Button>
+
+                            <div className="relative flex items-center gap-4 my-2">
+                                <div className="flex-1 border-t border-gray-200"></div>
+                                <span className="text-xs text-gray-400">or</span>
+                                <div className="flex-1 border-t border-gray-200"></div>
+                            </div>
+
+                            <GoogleSignInBtn redirectTo="/profile" />
                         </div>
                     </Form>
 

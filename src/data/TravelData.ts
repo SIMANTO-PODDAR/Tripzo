@@ -1,51 +1,146 @@
 export const Data = [
     {
-        title: "A Peaceful Weekend in Cox's Bazar",
+        title: "A Memorable Escape to Paris",
         description:
-            "Spent a relaxing weekend by the sea, enjoying the beautiful beach views, local food, and peaceful sunset moments.",
-        image: "https://i.ibb.co/Xkv8BBnL/tripzo-logo.png",
-        location: ["cox's bazar", "bangladesh"],
-        travelDate: "2026-07-10",
-        travelType: "Family Trip",
-    },
-    {
-        title: "Exploring the Hills of Bandarban",
-        description:
-            "A memorable adventure through green hills, waterfalls, and local tribal culture with amazing natural views.",
-        image: "https://i.ibb.co/Xkv8BBnL/tripzo-logo.png",
-        location: ["bandarban", "bangladesh"],
-        travelDate: "2026-06-28",
-        travelType: "Mountain Trek",
-
-    },
-    {
-        title: "Discovering Historical Places in Dhaka",
-        description:
-            "Visited some of the oldest historical locations in Dhaka and learned about the rich heritage of Bangladesh.",
-        image: "https://i.ibb.co/Xkv8BBnL/tripzo-logo.png",
-        location: ["dhaka", "bangladesh"],
-        travelDate: "2026-07-05",
-        travelType: "Cultural",
-
-    },
-    {
-        title: "Wildlife Adventure at Sundarbans",
-        description:
-            "Explored the world's largest mangrove forest and enjoyed the beauty of nature and wildlife.",
-        image: "https://i.ibb.co/Xkv8BBnL/tripzo-logo.png",
-        location: ["sundarbans", "bangladesh"],
-        travelDate: "2026-06-20",
-        travelType: "Wildlife Safari",
-
-    },
-    {
-        title: "Romantic Getaway to Saint Martin",
-        description:
-            "Enjoyed a beautiful island trip with stunning ocean views, fresh seafood, and unforgettable memories.",
-        image: "https://i.ibb.co/Xkv8BBnL/tripzo-logo.png",
-        location: ["saint martin", "bangladesh"],
-        travelDate: "2026-07-14",
+            "Explored the charming streets of Paris, admired iconic landmarks, enjoyed authentic French cuisine, and spent peaceful evenings watching the city sparkle beside the Seine River.",
+        image: "https://i.ibb.co.com/qYxNwVxX/Paris.png",
+        location: ["Paris", "France"],
+        travelDate: "2026-03-18",
         travelType: "Couple Trip",
-
+        userId: "abc123xyz789",
+        userName: "John Smith",
+        userEmail: "john.smith@example.com",
     },
-]
+    {
+        title: "Adventure Across Swiss Alps",
+        description:
+            "Experienced breathtaking mountain landscapes, scenic train rides, crystal-clear lakes, and unforgettable hiking trails while discovering the natural beauty of Switzerland.",
+        image: "https://i.ibb.co.com/QjCpYX8B/Swiss-Alps.png",
+        location: ["Zermatt", "Switzerland"],
+        travelDate: "2026-05-11",
+        travelType: "Mountain Trek",
+        userId: "def456uvw012",
+        userName: "Sarah Johnson",
+        userEmail: "sarah.j@example.com",
+    },
+    {
+        title: "Discovering the Beauty of Kyoto",
+        description:
+            "Visited ancient temples, peaceful bamboo forests, colorful shrines, and traditional tea houses while enjoying the timeless culture and calm atmosphere of Kyoto.",
+        image: "https://i.ibb.co.com/1JBtHNvk/Kyoto.png",
+        location: ["Kyoto", "Japan"],
+        travelDate: "2026-04-07",
+        travelType: "Cultural",
+        userId: "ghi789rst345",
+        userName: "Emily Chen",
+        userEmail: "emily.chen@example.com",
+    },
+    {
+        title: "A Tropical Getaway in Bali",
+        description:
+            "Relaxed on stunning beaches, explored lush rice terraces, visited beautiful temples, and experienced vibrant local traditions during an unforgettable island vacation.",
+        image: "https://i.ibb.co.com/ZRggFbp2/Bali.png",
+        location: ["Bali", "Indonesia"],
+        travelDate: "2026-02-21",
+        travelType: "Family Trip",
+        userId: "jkl012mno678",
+        userName: "Michael Brown",
+        userEmail: "michael.brown@example.com",
+    },
+    {
+        title: "Solo Journey Through Iceland",
+        description:
+            "Drove along dramatic coastlines, witnessed magnificent waterfalls, soaked in geothermal lagoons, and admired the magical Northern Lights under peaceful skies.",
+        image: "https://i.ibb.co.com/sJqYPs0c/Iceland.png",
+        location: ["Reykjavik", "Iceland"],
+        travelDate: "2026-01-15",
+        travelType: "Solo Travel",
+        userId: "mno345pqr901",
+        userName: "Jessica Lee",
+        userEmail: "jessica.lee@example.com",
+    },
+    {
+        title: "Exploring the Streets of Rome",
+        description:
+            "Walked through centuries of history, admired remarkable architecture, tasted authentic Italian dishes, and enjoyed lively city squares filled with local culture.",
+        image: "https://i.ibb.co.com/pvRQPWpZ/Rome.png",
+        location: ["Rome", "Italy"],
+        travelDate: "2026-06-03",
+        travelType: "Cultural",
+        userId: "pqr678stu234",
+        userName: "David Wilson",
+        userEmail: "david.wilson@example.com",
+    },
+    {
+        title: "Safari Adventure in Maasai Mara",
+        description:
+            "Witnessed incredible wildlife, spotted lions and elephants, enjoyed breathtaking savannah landscapes, and experienced unforgettable sunrise game drives across Kenya.",
+        image: "https://i.ibb.co.com/zH896KGJ/Maasai-Mara.png",
+        location: ["Maasai Mara", "Kenya"],
+        travelDate: "2026-08-09",
+        travelType: "Wildlife Safari",
+        userId: "stu901vwx567",
+        userName: "Amanda Garcia",
+        userEmail: "amanda.garcia@example.com",
+    },
+    {
+        title: "Thrilling Days in Queenstown",
+        description:
+            "Tried exciting outdoor adventures including bungee jumping, scenic hiking, and lake cruises while surrounded by New Zealand's spectacular alpine scenery.",
+        image: "https://i.ibb.co.com/wZVjTB86/Queenstown.png",
+        location: ["Queenstown", "New Zealand"],
+        travelDate: "2026-11-14",
+        travelType: "Adventure",
+        userId: "vwx234yz890",
+        userName: "Robert Taylor",
+        userEmail: "robert.taylor@example.com",
+    },
+    {
+        title: "Weekend Escape to Santorini",
+        description:
+            "Enjoyed breathtaking sunsets, whitewashed villages, crystal blue waters, and delicious Mediterranean cuisine while relaxing on one of Greece's most beautiful islands.",
+        image: "https://i.ibb.co.com/TD2188Sc/Santorini.jpg",
+        location: ["Santorini", "Greece"],
+        travelDate: "2026-09-06",
+        travelType: "Couple Trip",
+        userId: "yza567bcd123",
+        userName: "Sophie Martinez",
+        userEmail: "sophie.martinez@example.com",
+    },
+    {
+        title: "Exploring Dubai's Modern Wonders",
+        description:
+            "Visited world-famous skyscrapers, luxury shopping destinations, desert landscapes, and lively entertainment districts while experiencing the city's unique modern charm.",
+        image: "https://i.ibb.co.com/VWNKv4yy/Dubai.png",
+        location: ["Dubai", "United Arab Emirates"],
+        travelDate: "2026-10-19",
+        travelType: "Family Trip",
+        userId: "bcd890efg456",
+        userName: "James Anderson",
+        userEmail: "james.anderson@example.com",
+    },
+    {
+        title: "Backpacking Around Patagonia",
+        description:
+            "Treked through rugged mountain trails, admired turquoise lakes, photographed dramatic glaciers, and camped beneath clear skies in South America's wild landscapes.",
+        image: "https://i.ibb.co.com/6fkwsC8/Patagonia.png",
+        location: ["Patagonia", "Argentina"],
+        travelDate: "2026-12-02",
+        travelType: "Mountain Trek",
+        userId: "efg123hij789",
+        userName: "Olivia Thompson",
+        userEmail: "olivia.thompson@example.com",
+    },
+    {
+        title: "A Scenic Escape to Banff",
+        description:
+            "Explored emerald lakes, towering mountain peaks, peaceful forests, and scenic viewpoints while discovering the incredible beauty of Canada's national parks.",
+        image: "https://i.ibb.co.com/B2qVTSWj/Banff.png",
+        location: ["Banff", "Canada"],
+        travelDate: "2026-07-24",
+        travelType: "Adventure",
+        userId: "hij456klm012",
+        userName: "Daniel White",
+        userEmail: "daniel.white@example.com",
+    },
+];

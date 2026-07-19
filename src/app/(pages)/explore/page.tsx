@@ -74,7 +74,7 @@ function ExploreContent() {
         search: searchParams.get("search") ?? "",
         travelType: searchParams.get("travelType") ?? "",
         last7Days: searchParams.get("last7Days") ?? "",
-        sort: searchParams.get("sort") ?? "newest",
+        sort: searchParams.get("sort") ?? "oldest",
     });
     const [page, setPage] = useState<number>(
         parseInt(searchParams.get("page") ?? "1", 10)
