@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
-import { generateTravelStory } from "@/lib/gemini";
+import { generateTravelStory, analyzeImage } from "@/lib/gemini";
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { imageUrl, prompt, storyLength } = body;
+    const { imageUrl, prompt, storyLength, type } = body;
 
-    // Validate inputs
+    // Validate common inputs
     if (!imageUrl || typeof imageUrl !== "string") {
       return NextResponse.json(
         { error: "Invalid or missing image URL" },
@@ -21,13 +21,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (!storyLength || typeof storyLength !== "string") {
-      return NextResponse.json(
-        { error: "Invalid or missing story length" },
-        { status: 400 }
-      );
-    }
-
     // Check API key configuration
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
@@ -37,12 +30,24 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Generate story using centralized gemini library
-    const story = await generateTravelStory(imageUrl, prompt, storyLength);
-
-    return NextResponse.json({ story });
+    // Handle different request types
+    if (type === "image-analysis") {
+      // Image analysis request
+      const analysis = await analyzeImage(imageUrl, prompt);
+      return NextResponse.json({ analysis });
+    } else {
+      // Story generation request (default, backward compatible)
+      if (!storyLength || typeof storyLength !== "string") {
+        return NextResponse.json(
+          { error: "Invalid or missing story length" },
+          { status: 400 }
+        );
+      }
+      const story = await generateTravelStory(imageUrl, prompt, storyLength);
+      return NextResponse.json({ story });
+    }
   } catch (error) {
-    console.error("Error generating story:", error);
+    console.error("Error in AI API:", error);
       return NextResponse.json(
       { error: "AI service is temporarily unavailable. Please try again later." },
         { status: 500 }

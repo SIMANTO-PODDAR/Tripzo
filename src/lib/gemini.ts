@@ -14,6 +14,11 @@ export interface TravelStoryContext {
   storyLength: string;
 }
 
+export interface ImageAnalysisContext {
+  imageUrl: string;
+  prompt: string;
+}
+
 
 export async function generateTravelStory(
   imageUrl: string,
@@ -98,6 +103,95 @@ Make it feel like a real human travel memory. Use engaging storytelling. Return 
   }
 
   return story;
+}
+
+/**
+ * Analyze an image and provide detailed description
+ * Used for AI Image Explorer feature
+ */
+export async function analyzeImage(
+  imageUrl: string,
+  prompt: string
+): Promise<string> {
+  if (!genAI) {
+    console.error("Gemini client not initialized. GEMINI_API_KEY is not set.");
+    throw new Error("AI service is temporarily unavailable. Please try again later.");
+  }
+
+  const model = genAI.getGenerativeModel({ model: "gemini-3.5-flash" });
+
+  // Fetch image from URL
+  let imageResponse: Response;
+  try {
+    imageResponse = await fetch(imageUrl);
+  } catch (error) {
+    console.error("Failed to fetch image from URL:", error);
+    throw new Error("AI service is temporarily unavailable. Please try again later.");
+  }
+
+  if (!imageResponse.ok) {
+    console.error(`Failed to fetch image from URL. Status: ${imageResponse.status}`);
+    throw new Error("AI service is temporarily unavailable. Please try again later.");
+  }
+
+  const imageBuffer = await imageResponse.arrayBuffer();
+  const base64Image = Buffer.from(imageBuffer).toString("base64");
+
+  // Determine MIME type from URL or default to jpeg
+  let mimeType = "image/jpeg";
+  const urlLower = imageUrl.toLowerCase();
+  if (urlLower.endsWith(".png")) {
+    mimeType = "image/png";
+  } else if (urlLower.endsWith(".webp")) {
+    mimeType = "image/webp";
+  } else if (urlLower.endsWith(".gif")) {
+    mimeType = "image/gif";
+  }
+
+  const textPrompt = `${prompt}
+
+Provide a comprehensive analysis in 300-400 words. Include:
+- Scene description and setting
+- Important objects and elements
+- Mood and atmosphere
+- Location hints and context
+- Travel insights and observations
+
+Return only the analysis text. Do not add markdown, headings, or extra explanations.`;
+
+  // Call Gemini vision model
+  let result;
+  try {
+    result = await model.generateContent({
+      contents: [
+        {
+          role: "user",
+          parts: [
+            { text: textPrompt },
+            {
+              inlineData: {
+                mimeType: mimeType,
+                data: base64Image,
+              },
+            },
+          ],
+        },
+      ],
+    });
+  } catch (error) {
+    console.error("Error calling Gemini API:", error);
+    throw new Error("AI service is temporarily unavailable. Please try again later.");
+  }
+
+  const response = await result.response;
+  const analysis = response.text();
+
+  if (!analysis) {
+    console.error("No analysis generated from Gemini API");
+    throw new Error("AI service is temporarily unavailable. Please try again later.");
+  }
+
+  return analysis;
 }
 
 /**

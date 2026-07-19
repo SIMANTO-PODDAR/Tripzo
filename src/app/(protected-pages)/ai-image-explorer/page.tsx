@@ -22,13 +22,16 @@ interface ChatMessage {
         imageUrl?: string;
         prompt?: string;
         storyLength?: string;
+        analysis?: string;
+        loading?: boolean;
+        error?: string;
     };
 }
 
 // ---------- Hidden constants ----------
 const HIDDEN_PROMPT =
     "Analyze this travel image and provide useful context including scene description, important objects, mood, location hints, and travel insights.";
-const HIDDEN_STORY_LENGTH = "400-450";
+const HIDDEN_STORY_LENGTH = "300-400";
 
 export default function ImageUnderstandingPage() {
     // ----- Image upload states -----
@@ -144,7 +147,7 @@ export default function ImageUnderstandingPage() {
     };
 
     // ============ ANALYZE HANDLER ============
-    const handleAnalyze = () => {
+    const handleAnalyze = async () => {
         if (!imageUrl || uploading) return;
 
         const userMsg: ChatMessage = {
@@ -162,6 +165,7 @@ export default function ImageUnderstandingPage() {
                 imageUrl,
                 prompt: HIDDEN_PROMPT,
                 storyLength: HIDDEN_STORY_LENGTH,
+                loading: true,
             },
         };
 
@@ -170,6 +174,73 @@ export default function ImageUnderstandingPage() {
         // Reset upload state (keep image cleared so user can upload another)
         setImageUrl("");
         setPreviewUrl(null);
+
+        // Call API to analyze image
+        try {
+            const res = await fetch("/api/ai", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    imageUrl,
+                    prompt: HIDDEN_PROMPT,
+                    storyLength: HIDDEN_STORY_LENGTH,
+                    type: "image-analysis",
+                }),
+            });
+
+            const data = await res.json();
+
+            if (res.ok) {
+                setMessages((prev) =>
+                    prev.map((msg) =>
+                        msg.id === aiMsg.id
+                            ? {
+                                ...msg,
+                                content: {
+                                    ...msg.content,
+                                    analysis: data.analysis,
+                                    loading: false,
+                                },
+                            }
+                            : msg
+                    )
+                );
+            } else {
+                setMessages((prev) =>
+                    prev.map((msg) =>
+                        msg.id === aiMsg.id
+                            ? {
+                                ...msg,
+                                content: {
+                                    ...msg.content,
+                                    error: data.error || "Failed to analyze image",
+                                    loading: false,
+                                },
+                            }
+                            : msg
+                    )
+                );
+                toast.error(data.error || "Failed to analyze image");
+            }
+        } catch (error) {
+            setMessages((prev) =>
+                prev.map((msg) =>
+                    msg.id === aiMsg.id
+                        ? {
+                            ...msg,
+                            content: {
+                                ...msg.content,
+                                error: "Network error occurred",
+                                loading: false,
+                            },
+                        }
+                        : msg
+                )
+            );
+            toast.error("Network error occurred");
+        }
     };
 
     // ----- Derived state -----
@@ -201,7 +272,7 @@ export default function ImageUnderstandingPage() {
                             <p className="text-xs mt-1">Upload a travel image and click analyze to get started.</p>
                         </div>
                     ) : (
-                        messages.map((msg) => <ChatBubble key={msg.id} message={msg} />)
+                        messages.map((msg) => <ChatBubble key={msg.id} message={msg} onAnalyzeAgain={handleAnalyze} setImageUrl={setImageUrl} />)
                     )}
                 </div>
             </div>
@@ -298,7 +369,7 @@ export default function ImageUnderstandingPage() {
 }
 
 // ---------- Chat Bubble Component ----------
-function ChatBubble({ message }: { message: ChatMessage }) {
+function ChatBubble({ message, onAnalyzeAgain, setImageUrl }: { message: ChatMessage; onAnalyzeAgain: () => Promise<void>; setImageUrl: (url: string) => void }) {
     const isUser = message.type === "user";
 
     return (
@@ -345,28 +416,50 @@ function ChatBubble({ message }: { message: ChatMessage }) {
                 ) : (
                     <div className="text-sm space-y-2">
                         <p className="font-medium text-[#0F566C]">Image Analysis</p>
-                        <div className="p-3 bg-yellow-50 border border-yellow-200 rounded-lg text-xs text-yellow-800 flex items-start gap-2">
-                            <LoaderCircle className="h-4 w-4 animate-spin mt-0.5 shrink-0" />
-                            <span>Waiting for AI integration...</span>
-                        </div>
-
-                        {/* Disabled action buttons (for future use) */}
-                        <div className="flex gap-2 pt-2">
-                            <button
-                                disabled
-                                className="flex items-center gap-1 text-xs px-3 py-1 rounded-full bg-gray-100 text-gray-400 cursor-not-allowed"
-                            >
-                                <RefreshCw className="w-3 h-3" />
-                                Analyze Again
-                            </button>
-                            <button
-                                disabled
-                                className="flex items-center gap-1 text-xs px-3 py-1 rounded-full bg-gray-100 text-gray-400 cursor-not-allowed"
-                            >
-                                <Copy className="w-3 h-3" />
-                                Copy
-                            </button>
-                        </div>
+                        {message.content.loading && (
+                            <div className="p-3 bg-yellow-50 border border-yellow-200 rounded-lg text-xs text-yellow-800 flex items-start gap-2">
+                                <LoaderCircle className="h-4 w-4 animate-spin mt-0.5 shrink-0" />
+                                <span>Analyzing your travel image...</span>
+                            </div>
+                        )}
+                        {message.content.error && (
+                            <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-xs text-red-800">
+                                {message.content.error}
+                            </div>
+                        )}
+                        {message.content.analysis && (
+                            <div className="mt-3">
+                                <p className="leading-relaxed whitespace-pre-wrap">{message.content.analysis}</p>
+                            </div>
+                        )}
+                        {!message.content.loading && !message.content.error && (
+                            <div className="flex gap-2 pt-2">
+                                <button
+                                    onClick={() => {
+                                        if (message.content.imageUrl) {
+                                            setImageUrl(message.content.imageUrl!);
+                                            onAnalyzeAgain();
+                                        }
+                                    }}
+                                    className="flex items-center gap-1 text-xs px-3 py-1 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
+                                >
+                                    <RefreshCw className="w-3 h-3" />
+                                    Analyze Again
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        if (message.content.analysis) {
+                                            navigator.clipboard.writeText(message.content.analysis!);
+                                            toast.success("Analysis copied to clipboard");
+                                        }
+                                    }}
+                                    className="flex items-center gap-1 text-xs px-3 py-1 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
+                                >
+                                    <Copy className="w-3 h-3" />
+                                    Copy
+                                </button>
+                            </div>
+                        )}
                     </div>
                 )}
             </div>
