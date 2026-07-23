@@ -32,6 +32,19 @@ This project is deployed with automatic CI/CD from the `main` branch.
 
 ---
 
+<div align="center">
+  <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td valign="top" width="60%">
+        <img src="https://i.ibb.co.com/5gc1sBts/project-desktop-view.jpg" alt="Tripzo Desktop View" width="100%" style="border-radius: 8px;" />
+      </td>
+      <td valign="top" width="35%">
+        <img src="https://i.ibb.co.com/BJbcYmc/project-mobile-view.jpg" alt="Tripzo Mobile View" width="100%" style="border-radius: 8px;" />
+      </td>
+    </tr>
+  </table>
+</div>
+
 ## Key Features
 
 ### 1. Interactive Landing Page
