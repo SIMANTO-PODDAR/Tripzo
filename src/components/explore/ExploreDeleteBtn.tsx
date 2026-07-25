@@ -1,7 +1,9 @@
 "use client";
 
 import { useAuth } from "@/context/AuthContext";
+import { db } from "@/lib/firebase";
 import { AlertDialog, Button } from "@heroui/react";
+import { deleteDoc, doc } from "firebase/firestore";
 import toast from "react-hot-toast";
 import { MdDeleteForever, MdOutlineMenuBook } from "react-icons/md";
 
@@ -35,13 +37,7 @@ export default function ExploreDeleteBtn({
         }
 
         try {
-            const res = await fetch(`/api/my-stories/${storyId}`, {
-                method: "DELETE",
-            });
-
-            if (!res.ok) {
-                throw new Error("Delete failed");
-            }
+            await deleteDoc(doc(db, "allStories", storyId));
 
             toast.success("Story deleted successfully!", {
                 id: loadingToast,
