@@ -7,12 +7,7 @@ import { deleteDoc, doc } from "firebase/firestore";
 import toast from "react-hot-toast";
 import { MdDeleteForever, MdOutlineMenuBook } from "react-icons/md";
 
-type Props = {
-    storyId: string;
-    storyTitle: string;
-    page: "explore" | "myStories" | "discoverMoreStories";
-    userId?: string;
-};
+import type { ExploreDeleteBtnProps as Props } from "@/types/modules/components";
 
 export default function ExploreDeleteBtn({
     storyId,

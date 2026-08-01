@@ -7,30 +7,11 @@ import Link from "next/link";
 import { Button } from "@heroui/react";
 
 import ExploreCard from "@/components/explore/ExploreCard";
-import ExploreFilters, { type FilterState } from "@/components/explore/ExploreFilters";
+import ExploreFilters from "@/components/explore/ExploreFilters";
 import ExplorePagination from "@/components/explore/ExplorePagination";
 import ExploreCardSkeleton from "@/components/explore/ExploreCardSkeleton";
 
-interface Story {
-    id: string;
-    title: string;
-    description: string;
-    location: [string, string];
-    travelDate: string;
-    travelType: string;
-    image: string;
-    userId: string;
-    userName: string;
-    userEmail: string;
-    createdAt?: string;
-}
-
-interface ApiResponse {
-    stories: Story[];
-    totalStories: number;
-    totalPages: number;
-    currentPage: number;
-}
+import type { Story, ApiResponse, FilterState } from "@/types/shared";
 
 const LIMIT = 8;
 const DEBOUNCE_MS = 350;

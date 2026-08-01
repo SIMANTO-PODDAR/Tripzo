@@ -1,14 +1,7 @@
 import { Sparkles, Image, Check } from "lucide-react";
 import Link from "next/link";
 
-interface FeatureCardProps {
-    icon: React.ElementType;
-    title: string;
-    description: string;
-    highlights: string[];
-    infoText: string;
-    buttonLink: string;
-}
+import type { FeatureCardProps } from "@/types/modules/sections";
 
 function FeatureCard({
     icon: Icon,

@@ -1,19 +1,7 @@
 import { headers } from 'next/headers';
 import ExploreCard from '@/components/explore/ExploreCard';
 
-interface Story {
-    id: string;
-    title: string;
-    description: string;
-    location: [string, string];
-    travelDate: string;
-    travelType: string;
-    image: string;
-    userId: string;
-    userName: string;
-    userEmail: string;
-    createdAt?: string;
-}
+import type { Story } from "@/types/shared";
 
 type Props = {
     travelType: string;

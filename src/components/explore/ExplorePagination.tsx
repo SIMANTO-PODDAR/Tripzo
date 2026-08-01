@@ -2,11 +2,7 @@
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-interface ExplorePaginationProps {
-    currentPage: number;
-    totalPages: number;
-    onPageChange: (page: number) => void;
-}
+import type { ExplorePaginationProps } from "@/types/modules/components";
 
 export default function ExplorePagination({
     currentPage,

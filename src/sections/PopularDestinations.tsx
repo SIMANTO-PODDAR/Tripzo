@@ -1,24 +1,13 @@
 "use client";
 
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import Bali from "../../public/Indonesia.jpg";
 import Santorini from "../../public/Santorini.jpg";
 import SwissAlps from "../../public/Swiss-Alps.jpg";
 import { MapPin, Star, Calendar, ArrowRight, Compass, BookOpen } from "lucide-react";
 import Link from "next/link";
 
-// Types
-interface Destination {
-    id: string;
-    name: string;
-    country: string;
-    description: string;
-    rating: number;
-    stories: number;
-    bestSeason: string;
-    image: StaticImageData;
-    badges: string[];
-}
+import type { Destination } from "@/types/modules/sections";
 
 
 // Destinations Data 

@@ -4,18 +4,7 @@ import Link from 'next/link';
 import { MapPin, CalendarDays, User, ArrowLeft } from 'lucide-react';
 import DiscoverMoreStories from '@/sections/DiscoverMoreStories';
 
-interface Story {
-    id: string;
-    title: string;
-    description: string;
-    location: string[];
-    travelDate: string;
-    travelType: string;
-    image: string;
-    userId: string;
-    userName: string;
-    userEmail: string;
-}
+import type { Story } from "@/types/shared";
 
 async function getStory(id: string): Promise<Story> {
     const headersList = await headers();

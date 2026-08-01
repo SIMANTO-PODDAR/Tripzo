@@ -2,17 +2,7 @@ import React from 'react';
 import Marquee from 'react-fast-marquee';
 import { Star, Quote, CheckCircle, MapPin, MessageCircle } from 'lucide-react';
 
-interface Testimonial {
-    id: number;
-    name: string;
-    location: string;
-    country: string;
-    avatar: string;
-    rating: number;
-    storyTitle: string;
-    review: string;
-    travelType: string;
-}
+import type { Testimonial } from "@/types/modules/sections";
 
 const testimonials: Testimonial[] = [
     {

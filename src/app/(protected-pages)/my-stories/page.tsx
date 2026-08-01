@@ -10,26 +10,7 @@ import ExplorePagination from "@/components/explore/ExplorePagination";
 import ExploreCardSkeleton from "@/components/explore/ExploreCardSkeleton";
 import { useAuth } from "@/context/AuthContext";
 
-interface Story {
-    id: string;
-    title: string;
-    description: string;
-    location: [string, string];
-    travelDate: string;
-    travelType: string;
-    image: string;
-    userId: string;
-    userName: string;
-    userEmail: string;
-    createdAt?: string;
-}
-
-interface ApiResponse {
-    stories: Story[];
-    totalStories: number;
-    totalPages: number;
-    currentPage: number;
-}
+import type { Story, ApiResponse } from "@/types/shared";
 
 type FetchState = {
     stories: Story[];

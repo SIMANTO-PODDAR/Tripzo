@@ -2,11 +2,7 @@ import { Globe, Album, Compass, Sparkles, Camera } from 'lucide-react';
 import ShareExperienceBtn from '@/components/share/ShareExperienceBtn';
 
 
-interface Feature {
-  title: string;
-  description: string;
-  icon: React.ElementType;
-}
+import type { Feature } from "@/types/modules/sections";
 
 const features: Feature[] = [
   {

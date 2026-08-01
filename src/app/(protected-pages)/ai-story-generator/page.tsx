@@ -15,18 +15,7 @@ import {
 import toast from "react-hot-toast";
 
 // ---------- Types ----------
-interface ChatMessage {
-    id: string;
-    type: "user" | "ai";
-    content: {
-        imageUrl?: string;
-        prompt?: string;
-        storyLength?: string;
-        story?: string;
-        loading?: boolean;
-        error?: string;
-    };
-}
+import type { ChatMessage } from "@/types/shared/ai";
 
 export default function StoryGeneratorPage() {
     // ----- Image upload states -----

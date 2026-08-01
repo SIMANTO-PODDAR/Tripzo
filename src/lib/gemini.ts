@@ -8,17 +8,6 @@ if (!apiKey) {
 
 const genAI = apiKey ? new GoogleGenerativeAI(apiKey) : null;
 
-export interface TravelStoryContext {
-  imageUrl: string;
-  prompt: string;
-  storyLength: string;
-}
-
-export interface ImageAnalysisContext {
-  imageUrl: string;
-  prompt: string;
-}
-
 
 export async function generateTravelStory(
   imageUrl: string,

@@ -2,17 +2,7 @@
 
 import { Search, Calendar } from "lucide-react";
 
-export interface FilterState {
-    search: string;
-    travelType: string;
-    last7Days: string; // "true" or ""
-    sort: string;
-}
-
-interface ExploreFiltersProps {
-    filters: FilterState;
-    onChange: (updated: Partial<FilterState>) => void;
-}
+import type { ExploreFiltersProps } from "@/types/modules/components";
 
 const TRAVEL_TYPES = [
     { label: "All Travel Types", value: "" },

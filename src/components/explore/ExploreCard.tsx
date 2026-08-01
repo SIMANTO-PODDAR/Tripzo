@@ -4,24 +4,7 @@ import { MapPin, Calendar, ArrowRight } from "lucide-react";
 import ExploreDeleteBtn from "./ExploreDeleteBtn";
 import Link from "next/link";
 
-interface Story {
-    id: string;
-    title: string;
-    description: string;
-    location: [string, string];
-    travelDate: string;
-    travelType: string;
-    image: string;
-    userId: string;
-    userName: string;
-    userEmail: string;
-    createdAt?: string;
-}
-
-interface ExploreCardProps {
-    story: Story;
-    page: "explore" | "myStories" | "discoverMoreStories";
-}
+import type { ExploreCardProps } from "@/types/modules/components";
 
 export default function ExploreCard({ story, page }: ExploreCardProps) {
 

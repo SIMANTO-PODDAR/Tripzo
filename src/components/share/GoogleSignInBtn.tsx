@@ -8,9 +8,7 @@ import toast from "react-hot-toast";
 import { auth } from "@/lib/firebase";
 import { Globe } from "lucide-react";
 
-interface GoogleSignInBtnProps {
-    redirectTo?: string;
-}
+import type { GoogleSignInBtnProps } from "@/types/modules/components";
 
 const GoogleSignInBtn = ({ redirectTo = "/profile" }: GoogleSignInBtnProps) => {
     const router = useRouter();
