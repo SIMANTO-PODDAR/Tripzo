@@ -74,8 +74,8 @@ const Navbar = () => {
                         </div>
                     ) : (
                         <div className="navbar-end">
-                            <Link href={'/login'} className="btn btn-sm bg-[#0F566C] font-bold text-white flex gap-2 items-center">
-                                Login
+                            <Link href={'/authentication'} className="btn btn-sm bg-[#0F566C] font-bold text-white flex gap-2 items-center">
+                                Sign in
                                 <span className="text-xl rotate-180"><AiOutlineLogin /></span>
                             </Link>
                         </div>
