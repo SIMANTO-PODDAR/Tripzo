@@ -53,7 +53,7 @@ A responsive homepage with hero section, popular destinations, platform benefits
 
 ### 2. User Authentication
 
-Secure Firebase Authentication with Google Sign In, email/password registration, login, and demo login functionality for quick access.
+Secure Firebase Authentication with Google Sign In, email/password registration, login, and one-click demo login functionality (`John1@example.com` / `John1@example.com`) for quick access.
 
 ### 3. Explore Travel Stories
 
@@ -73,7 +73,7 @@ Dedicated dashboard for users to view and manage their posted stories with delet
 
 ### 7. User Profile
 
-Protected profile page displaying user information from Firebase Authentication with logout functionality.
+Protected profile page displaying user information from Firebase Authentication with quick navigation to key actions.
 
 ### 8. AI Story Generator
 
@@ -114,9 +114,9 @@ Community page featuring platform information, social media connections, contact
 |---|---|---|
 | `/` | 🟢 Public | Landing page with hero, destinations, features, testimonials |
 | `/explore` | 🟢 Public | Browse all travel stories with search, filters, and pagination |
+| `/explore/[id]` | 🟢 Public | Story details view with related story recommendations |
 | `/community` | 🟢 Public | Community information, social links, and contact details |
-| `/login` | 🟢 Public | User authentication with demo login option |
-| `/registration` | 🟢 Public | New user registration |
+| `/authentication` | 🟢 Public | User authentication (Sign In & Register) with demo login |
 | `/post-story` | 🔴 Private | Create new travel story with image upload |
 | `/my-stories` | 🔴 Private | View and manage user's posted stories |
 | `/profile` | 🔴 Private | User profile information |
