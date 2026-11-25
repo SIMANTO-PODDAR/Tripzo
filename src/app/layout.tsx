@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Tripzo",
-  description: "by Simanto",
+  description: "Tripzo is a modern travel experience sharing platform that enables travelers to share authentic stories enhanced by AI-powered content generation and image analysis. Tripzo connects travelers worldwide, allowing them to create, share, and discover authentic travel stories. With AI-powered tools for story generation and image analysis, users can craft compelling narratives and gain deeper insights into their travel experiences. Travelers share real experiences and connect with a global community. Explorers discover destinations through authentic stories and AI-enhanced content. Tripzo provides a seamless platform for storytelling and discovery",
 };
 
 export default function RootLayout({
